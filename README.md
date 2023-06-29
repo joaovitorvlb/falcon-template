@@ -22,6 +22,7 @@ A instenção é criar uma aplicação web que apartir da index seja retornado u
 ## Inatalação da ferramentas Falcon
 
 * pip install falcon
+* pip install sqlalchemy
 
 ## Execução da aplicação, ececutando o app.py
 
@@ -80,5 +81,33 @@ Para testar começaremos a trestar as rotas no postman:
     Acesso à Rota Home:
         Método: GET
         URL: http://localhost:8080/
+
+
+Foi adicionado persistencia em banco de dados usando um ORM o SqlAlchemy
+
+Definição do modelo: O SQLAlchemy permite definir classes Python que representam as tabelas do banco de dados. Essas classes são chamadas de modelos ou entidades. No exemplo fornecido, temos a classe User que representa a tabela "users" no banco de dados. Os atributos da classe correspondem às colunas da tabela.
+
+Criação do banco de dados: O SQLAlchemy possibilita a criação do banco de dados automaticamente com base nas definições dos modelos. No exemplo, criamos uma instância de engine usando o URL de conexão com o banco de dados SQLite e definimos uma sessão usando sessionmaker para interagir com o banco de dados.
+
+A modelagem feita a partir desse modelo?
+
+    class UserModel(Base):
+        __tablename__ = 'users'
+
+        id = Column(Integer, primary_key=True)
+        username = Column(String(50), unique=True)
+        password = Column(String(50))
+
+Como o ORM adiciona os dados a partir de uma intancia do modelo, deixando muito mais facil a persistencia.
+
+    session = Session()
+    session.add(user)
+    session.commit()
+
+Como o usuario e consultado
+
+    session = Session()
+    user = session.query(UserModel).filter_by(username=username).first()
+    session.close()
    
 

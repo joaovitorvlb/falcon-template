@@ -3,6 +3,9 @@ from controllers.home_controller import HomeController
 from controllers.login_controller import LoginController
 from controllers.user_controller import UserController
 
+from models.database import engine
+from models.user import Base
+
 # Cria a instância da aplicação Falcon
 app = falcon.App()
 
