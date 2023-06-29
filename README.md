@@ -37,6 +37,23 @@ Neste exemplo, temos as seguintes rotas:
 
 Primeiro se acessa a tela de cadastro via GET e usuário via POST e enviado e fica salva na seção.
 
+ 
+Para melhor organização e gerenciamento do projetos foi feita refatoração seguindo padrão MVC:
+
+    myapp/
+    ├── app.py
+    ├── controllers/
+    │   ├── __init__.py
+    │   ├── home_controller.py
+    │   ├── login_controller.py
+    │   └── user_controller.py
+    ├── models/
+    │   ├── __init__.py
+    │   └── user.py
+    └── views/
+        ├── __init__.py
+        └── home_view.py
+
 
 Para testar começaremos a trestar as rotas no postman:
 
@@ -62,5 +79,6 @@ Para testar começaremos a trestar as rotas no postman:
 
     Acesso à Rota Home:
         Método: GET
-        URL: http://localhost:8080/home
+        URL: http://localhost:8080/
+   
 
